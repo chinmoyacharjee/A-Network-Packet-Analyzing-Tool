@@ -6,7 +6,7 @@
 
 using namespace std;
 
-
+//color selector
 #define COLOR_RED     "\x1b[31m"
 #define COLOR_GREEN   "\x1b[32m"
 #define COLOR_YELLOW  "\x1b[33m"
@@ -48,7 +48,7 @@ bool creatSocket()
     //af_packet  : address family
     //Sock_Raw   : socket types [can capture raw byte from all the layers]
 
-    if(sock_raw < 0)//return negetive value if socket doesnot creat properly
+    if(sock_raw < 0)//return negetive value if socket doesnot create properly
     {
         return false;
     }
@@ -103,7 +103,7 @@ void capturePacket(long long int &numbersOfPacket)
     long long int packetNumber = 1; 
 
     int saddr_size , data_size;
-    struct sockaddr saddr;                  //
+    struct sockaddr saddr;                  
     
     unsigned char buffer[100000];           //holds the packet while capturing through socket
 
@@ -116,7 +116,15 @@ void capturePacket(long long int &numbersOfPacket)
     {
         
         data_size = recvfrom(sock_raw , buffer ,  100000, 0 , &saddr , (socklen_t*)&saddr_size);
-      
+        //data_size will holds the value of actual data size.
+        //buffer holds the data. [If we print the buffer value then it will print raw byte or binary.]
+        
+        //printing buffer
+        /*
+        for(int i=0;i<data_size;i++){
+            printf("%X", buffer[i]);
+        }
+        */
                   
         if(data_size <0 )
         {
