@@ -45,8 +45,8 @@ string transportLayerProtocol(int transport_Layer_Protocol){
                   return "UDP";      //in Hex, 24th byte of packet is 17 when it is "UDP"
         case 1  : icmp++;    
                   return "ICMP";    //in Hex, 24th byte of packet is 01 when it is "ICMP"
-        case 2  :    return "IGMP"; //in Hex, 24th byte of packet is 02 when it is "IGMP"
-        default :    return "Others";
+        case 2  : return "IGMP"; //in Hex, 24th byte of packet is 02 when it is "IGMP"
+        default : return "Others";
 
     }
 
@@ -79,7 +79,6 @@ bool isTransportLayerProtocolinScope(int temp)
 void printToConsole()
 {
     printf("Packet No\tProtocol\tSource Address\t\tDestination Address\t\tPacket Size\n"); 
-
 }
 
 string applicationLayerProrocol(unsigned short int temp)    //return application layer protocol decided by the port numbers of transport layer
@@ -119,8 +118,8 @@ bool isTcp(int packetNumber,int numberOfPackets)  //determinig the packet is tcp
         if(tcpPacket[i] == packetNumber) return true;
     }
     return false;
-
 }
+
 void printEthernetAddress(unsigned char ethadd[])   //printing the ethernet address
 {
     for(int i=0;i<6;i++)
@@ -129,6 +128,7 @@ void printEthernetAddress(unsigned char ethadd[])   //printing the ethernet addr
         else printf("%.2X",ethadd[i]);
     }
 }
+
 bool isMatchIP(unsigned char ip1[],unsigned char ip2[]) //ip matching
 {
     for(int i=0;i<4;i++)
@@ -164,8 +164,6 @@ bool fileValidity(char fileName[])
         k++;
     }
     return true;
-
-
 }
 
 bool ipValidity(char ip[])
